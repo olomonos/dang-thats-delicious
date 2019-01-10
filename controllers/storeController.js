@@ -32,6 +32,8 @@ exports.editStore = async (req, res) => {
 };
 
 exports.updateStore = async (req, res) => {
+  // set the location data to be Point
+  req.body.location.type = 'Point';
   const store = await Store.findOneAndUpdate({ _id: req.params.id }, req.body,
     {
     new: true,
